@@ -1,1 +1,411 @@
-/* time to style things up */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500&display=swap");
+
+/* ==============================
+   Theme colors and variables
+   ============================== */
+:root {
+  --background: #121713;
+  --surface: #1d241f;
+  --surface-light: #fffaf1;
+  --ink: #f6f1e7;
+  --ink-dark: #202820;
+  --sage: #71806c;
+  --accent: #d9a64a;
+  --white: #fffdf8;
+}
+
+/* ==============================
+   Global page setup
+   ============================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--background);
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ==============================
+   Navigation and brand
+   ============================== */
+header {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  border-bottom: 1px solid rgba(246, 241, 231, 0.12);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+nav button {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  padding: 10px 18px;
+  font:
+    500 0.95rem "DM Sans",
+    sans-serif;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+nav button:hover,
+nav button.active {
+  color: var(--accent);
+}
+nav button.active {
+  border-bottom-color: var(--accent);
+}
+
+nav .brand-mark {
+  margin-right: clamp(12px, 3vw, 36px);
+  color: var(--accent);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+/* ==============================
+   Shared page layout
+   ============================== */
+#content {
+  min-height: calc(100vh - 84px);
+}
+.page {
+  min-height: calc(100vh - 84px);
+  animation: appear 320ms ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================
+   Typography
+   ============================== */
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+}
+h1 {
+  font-size: clamp(3.5rem, 7vw, 6.8rem);
+  line-height: 0.88;
+  margin: 0;
+  font-weight: 500;
+}
+h2 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+/* ==============================
+   Home page and video hero
+   ============================== */
+.home-page {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 50px 24px;
+  background: var(--background);
+}
+
+/* Darken the video so the hero text remains readable. */
+.home-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 23, 19, 0.58);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-card {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 100%);
+  color: var(--ink);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.hero-card h1 {
+  max-width: 760px;
+}
+.hero-copy {
+  max-width: 540px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+.home-details {
+  display: flex;
+  gap: 64px;
+  margin-top: 44px;
+}
+.home-details p {
+  line-height: 1.8;
+}
+
+/* ==============================
+   Menu and contact pages
+   ============================== */
+.menu-page,
+.contact-page {
+  padding: 70px max(24px, 8vw) 90px;
+}
+.menu-page {
+  background: #171c18;
+}
+.contact-page {
+  background: #151914;
+}
+.page-heading {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+.page-heading h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+}
+
+.menu-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* ==============================
+   Menu and contact cards
+   ============================== */
+.menu-card,
+.contact-card {
+  background: var(--surface);
+  border: 1px solid rgba(246, 241, 231, 0.14);
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  padding: clamp(28px, 4vw, 48px);
+}
+.menu-card h2 {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 20px;
+}
+.menu-item {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(246, 241, 231, 0.1);
+}
+.menu-item:last-child {
+  border-bottom: 0;
+}
+.dish-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.dish-row h3 {
+  font-size: 1.45rem;
+  margin: 0;
+}
+.dish-row span {
+  color: var(--accent);
+  font-weight: 500;
+}
+.menu-item p {
+  margin: 6px 0 0;
+  color: #cbd0c8;
+}
+
+.contact-card {
+  min-height: 300px;
+}
+.contact-card p {
+  line-height: 1.8;
+}
+.contact-card a {
+  display: block;
+  width: fit-content;
+  color: var(--ink);
+  margin-top: 12px;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+/* ==============================
+   Entrance and hover animations
+   ============================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: reveal-up 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal:nth-of-type(2) {
+  animation-delay: 120ms;
+}
+.reveal:nth-of-type(3) {
+  animation-delay: 240ms;
+}
+.reveal:nth-of-type(4) {
+  animation-delay: 360ms;
+}
+
+@keyframes reveal-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: card-arrive 850ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes card-arrive {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-card,
+.contact-card {
+  transition:
+    transform 350ms ease,
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.menu-card:hover,
+.contact-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(217, 166, 74, 0.55);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.34);
+}
+
+.menu-item {
+  transition: padding-left 250ms ease, background-color 250ms ease;
+}
+
+.menu-item:hover {
+  padding-left: 12px;
+  background: linear-gradient(90deg, rgba(217, 166, 74, 0.08), transparent);
+}
+
+nav button {
+  position: relative;
+}
+
+/* Active and hover tab underline */
+nav button::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: -2px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 250ms ease;
+}
+
+nav button:hover::after,
+nav button.active::after {
+  transform: scaleX(1);
+}
+
+nav button.active {
+  border-bottom-color: transparent;
+}
+
+/* ==============================
+   Mobile layout
+   ============================== */
+@media (max-width: 700px) {
+  header {
+    height: 72px;
+  }
+
+  nav {
+    gap: 0;
+  }
+
+  nav .brand-mark {
+    margin-right: 6px;
+    font-size: 0.85rem;
+  }
+
+  nav button {
+    padding-inline: 10px;
+    font-size: 0.82rem;
+  }
+
+  #content,
+  .page {
+    min-height: calc(100vh - 72px);
+  }
+
+  .home-details {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .menu-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==============================
+   Reduced-motion accessibility
+   ============================== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card,
+  .menu-card,
+  .contact-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

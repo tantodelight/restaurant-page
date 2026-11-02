@@ -1,11 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- you may proceed master -->
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Page</title>
+  </head>
+  <body>
+    <!-- Site navigation used to switch pages. -->
+    <header>
+      <nav aria-label="Main navigation">
+        <button type="button" data-page="home">Home</button>
+        <button type="button" data-page="menu">Menu</button>
+        <button type="button" data-page="contact">Contact</button>
+      </nav>
+    </header>
+
+    <!-- JavaScript renders the selected page here. -->
+    <main id="content"></main>
+  </body>
 </html>
